@@ -1,0 +1,12 @@
+.vscode/settings.json
+__pycache__/download_files.cpython-36.pyc
+data/test.csv
+data/train.csv
+__pycache__/functions.cpython-36.pyc
+fit_params.pkl
+forecasting_report_databricks.pbix
+forecasting_report.pbix
+automl_settings.pkl
+automl_errors_regression.log
+Cloudicon.png
+config.json
