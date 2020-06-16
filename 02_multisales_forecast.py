@@ -57,7 +57,7 @@ e = time.time()
 
 #%%
 print(e-s)
-#3k seconds 
+#3k seconds --> 50 minutes
 
 #%%
 #check the output format
@@ -81,8 +81,9 @@ forecasts.drop(cols_to_drop, axis = 1).to_csv('D:\\Data\\TaxiData\\multiple_fore
 #parallel version
 from joblib import Parallel, delayed, parallel 
 
+#create a function to embed the training and 
 def train_prophet(g):
-    #split the tuple
+    #receives the grouped tubple, split it
     data = g[1]
     name = g[0]
 
@@ -95,9 +96,6 @@ def train_prophet(g):
 
     #minimum 60 data points, around 2 months
     if partition.shape[0] >= 60:
-
-        #print('processing partition. Location: ' + str(group_name[0]) + ' Payment type: ' + str(group_name[1]))
-    
         #train on partition 
         model = prop.Prophet()
         model.fit(partition)
@@ -129,9 +127,12 @@ def train_prophet(g):
         return pd.DataFrame()
 
 #%%
-#for loop version
+#parallel for loop version
 s = time.clock()
-forecasts = Parallel(n_jobs = 4, verbose = 1)(delayed(train_prophet)(g) for g in groups)
+forecasts = Parallel(n_jobs = 8, verbose = 1)(delayed(train_prophet)(g) for g in groups)
 e = time.clock()
 e - s
-#23 minutes
+#15 minutes with 8 cores and 8 processes
+
+
+# %%

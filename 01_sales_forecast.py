@@ -2,7 +2,6 @@
 import pandas as pd
 import numpy as np 
 import fbprophet as prop
-#import download_files as dw 
 import matplotlib.pyplot as plt 
 import os
 import csv
@@ -48,8 +47,6 @@ df_test.columns = ['ds', 'y']
 df_train = df_train.groupby('ds', as_index=False)['y'].sum()
 df_test = df_test.groupby('ds', as_index=False)['y'].sum()
 
-#%%
-df_train.plot(x='ds', y='y', figsize = (15, 15))
 
 #%%
 #fit a basic prophet model 
