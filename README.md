@@ -1,1 +1,1 @@
-# sales_forecasting_with_prophet
+# Sales forecast demos using Prophet Models

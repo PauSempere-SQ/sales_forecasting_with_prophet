@@ -10,3 +10,6 @@ automl_settings.pkl
 automl_errors_regression.log
 Cloudicon.png
 config.json
+03_automl_forecast.py
+00_get_covid_data.py
+~$SalesForecasting.pptx
